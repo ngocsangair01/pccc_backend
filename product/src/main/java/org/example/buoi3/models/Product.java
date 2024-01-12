@@ -1,14 +1,15 @@
 package org.example.buoi3.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.buoi3.models.base.BaseEntity;
 import org.hibernate.annotations.Nationalized;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -45,4 +46,14 @@ public class Product extends BaseEntity {
 
     @Column(name = "manufacture")
     private String manufacture;
+
+    @ManyToOne
+    @JoinColumn(name = "id_provider")
+    @JsonIgnore
+    private Provider provider;
+
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private List<AttributeDescription> attributeDescriptions;
 }

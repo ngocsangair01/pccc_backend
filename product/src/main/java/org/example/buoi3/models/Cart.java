@@ -15,7 +15,7 @@ import org.hibernate.annotations.Nationalized;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "provider")
+@Table(name = "cart")
 public class Cart extends BaseEntity {
 
     @Column(name = "name")
