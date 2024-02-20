@@ -9,29 +9,22 @@ import lombok.Setter;
 import org.example.buoi3.models.base.BaseEntity;
 import org.hibernate.annotations.Nationalized;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "attribute_description")
-public class AttributeDescription extends BaseEntity {
+@Table(name = "cart")
+public class CartDetail extends BaseEntity {
 
-    @Column(name = "title")
-    @Nationalized
-    private String title;
+    @Column(name = "number")
+    private Long number;
 
+    @Column(name = "id_product")
+    private Long idProduct;
 
-    @Column(name = "content")
-    @Nationalized
-    private String content;
-
-
-    @ManyToOne
-    @JoinColumn(name = "id_product")
+    @ManyToOne()
+    @JoinColumn(name = "id_user")
     @JsonIgnore
-    private Product product;
-
+    private User user;
 }

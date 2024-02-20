@@ -56,4 +56,18 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product")
     @JsonIgnore
     private List<AttributeDescription> attributeDescriptions;
+
+    @OneToMany
+    @JsonIgnore
+    @JoinColumn(name = "id_product")
+    private List<Image> images;
+
+    @ManyToMany
+    @JoinTable(
+            name = "category_provider",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
+
 }
