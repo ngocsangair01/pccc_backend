@@ -1,18 +1,11 @@
 package org.example.buoi3.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.example.buoi3.models.base.BaseEntity;
 import org.hibernate.annotations.Nationalized;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "image")
 public class Image extends BaseEntity {
@@ -21,6 +14,23 @@ public class Image extends BaseEntity {
     @Nationalized
     private String link;
 
+    public Image() {
+    }
 
+    public String getLink() {
+        return link;
+    }
 
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public Image(String link) {
+        this.link = link;
+    }
+
+    public Image(Long id, Long createBy, LocalDateTime createAt, Long updateBy, LocalDateTime updateAt, Boolean status, String link) {
+        super(id, createBy, createAt, updateBy, updateAt, status);
+        this.link = link;
+    }
 }
