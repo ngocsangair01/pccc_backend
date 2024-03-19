@@ -1,6 +1,7 @@
 package org.example.buoi3.outputs.product;
 
 import org.example.buoi3.models.AttributeDescription;
+import org.example.buoi3.models.Image;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class ProductDataOutput {
     private Long remaining;
     private String warranty;
     private List<AttributeDescriptionDataOutput> attributeDescriptionDataOutputs;
+    private List<String> images;
 
 
     public ProductDataOutput() {
@@ -30,6 +32,18 @@ public class ProductDataOutput {
         this.promoPrice = promoPrice;
         this.remaining = remaining;
         this.warranty = warranty;
+    }
+
+    public ProductDataOutput(String code, String image, String name) {
+        this.code = code;
+        this.image = image;
+        this.name = name;
+    }
+
+    public ProductDataOutput(String code, String name, List<String> images) {
+        this.code = code;
+        this.name = name;
+        this.images = images;
     }
 
     public String getCode() {
@@ -110,5 +124,13 @@ public class ProductDataOutput {
 
     public void setAttributeDescriptionDataOutputs(List<AttributeDescriptionDataOutput> attributeDescriptionDataOutputs) {
         this.attributeDescriptionDataOutputs = attributeDescriptionDataOutputs;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }
