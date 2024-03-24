@@ -15,14 +15,15 @@ import java.util.Map;
 @Component
 public class UploadFile {
 
-    private final Cloudinary cloudinary;
-
+    public static Cloudinary cloudinary;
+//
     public UploadFile(Cloudinary cloudinary) {
         this.cloudinary = cloudinary;
     }
 
-    public String imageToUrl(MultipartFile multipartFile) {
+    public static String imageToUrl(MultipartFile multipartFile) {
         try {
+
             Map<?, ?> map = cloudinary.uploader().upload(multipartFile.getBytes(), ObjectUtils.emptyMap());
             return map.get("secure_url").toString();
         } catch (IOException e) {
@@ -30,7 +31,7 @@ public class UploadFile {
         }
     }
 
-    public List<String> imagesToUrl(List<MultipartFile> multipartFiles) {
+    public static List<String> imagesToUrl(List<MultipartFile> multipartFiles) {
         List<String> images = new ArrayList<>();
         try {
             for (int i = 0; i < multipartFiles.size(); i++) {

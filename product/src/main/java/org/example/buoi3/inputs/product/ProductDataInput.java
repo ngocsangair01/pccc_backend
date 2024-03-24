@@ -23,6 +23,7 @@ public class ProductDataInput {
 
     private List<MultipartFile> images;
 
+
     public ProductDataInput() {
     }
 
