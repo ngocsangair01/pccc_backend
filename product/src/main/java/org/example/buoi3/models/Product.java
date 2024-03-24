@@ -50,9 +50,8 @@ public class Product extends BaseEntity {
     @JsonIgnore
     private List<AttributeDescription> attributeDescriptions;
 
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     @JsonIgnore
-    @JoinColumn(name = "id_product")
     private List<Image> images;
 
     @ManyToMany
