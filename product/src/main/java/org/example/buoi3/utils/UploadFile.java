@@ -23,7 +23,6 @@ public class UploadFile {
 
     public static String imageToUrl(MultipartFile multipartFile) {
         try {
-
             Map<?, ?> map = cloudinary.uploader().upload(multipartFile.getBytes(), ObjectUtils.emptyMap());
             return map.get("secure_url").toString();
         } catch (IOException e) {

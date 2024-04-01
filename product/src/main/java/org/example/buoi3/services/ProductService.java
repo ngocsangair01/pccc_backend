@@ -12,8 +12,6 @@ public interface ProductService {
 
     ProductDataOutput createProduct(ProductDataInput input);
 
-    ProductDataOutput createImagesProduct(ProductDataInput input);
-
     ProductDataOutput editProduct(ProductDataInput input, Long id);
 
     ProductDataOutput deleteProduct(Long id);

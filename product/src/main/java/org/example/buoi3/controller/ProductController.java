@@ -26,12 +26,6 @@ public class ProductController {
         return ResponseUtil.restSuccess(productDataOutput);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createImagesProduct(ProductDataInput input){
-        ProductDataOutput productDataOutput = productService.createImagesProduct(input);
-        return ResponseUtil.restSuccess(productDataOutput);
-    }
-
     @GetMapping
     public ResponseEntity<?> getDetailProduct(Long id){
         ProductDataOutput productDataOutput = productService.getProductDetail(id);

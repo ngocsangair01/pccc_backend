@@ -62,23 +62,8 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public ProductDataOutput createProduct(ProductDataInput input) {
-        Product product = new Product();
-        product.setName(input.getName());
-        product.setCode(input.getCode());
-        product.setImage(UploadFile.imageToUrl(input.getImage()));
-        return new ProductDataOutput(product.getCode(), product.getName(), product.getImage());
-    }
-
-    @Override
-    public ProductDataOutput createImagesProduct(ProductDataInput input) {
-        Product product = productMapper.toProduct(input);
+        Product product = productMapper.toProduct(input, null);
         productRepository.save(product);
-        for (int i = 0; i < product.getImages().size(); i++) {
-            Image image = product.getImages().get(i);
-            image.setProduct(product);
-            imageRepository.save(image);
-        }
-//        imageRepository.saveAll(product.getImages());
         return productMapper.toProductDataOutput(product);
     }
 
@@ -88,7 +73,7 @@ public class ProductServiceImp implements ProductService {
         if (product.isEmpty()){
             throw new NotFoundException("Not found product");
         }
-        Product product1 = productMapper.toEditProduct(input, id);
+        Product product1 = productMapper.toProduct(input, id);
         productRepository.save(product1);
         return productMapper.toProductDataOutput(product1);
     }

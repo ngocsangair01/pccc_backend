@@ -51,23 +51,6 @@ public interface ProductMapper {
         return listImage;
     }
 
-
-    @Mappings({
-            @Mapping(target = "code",source = "code"),
-            @Mapping(target = "condition",source = "condition"),
-            @Mapping(target = "manufacture",source = "manufacture"),
-            @Mapping(target = "image",source = "image", qualifiedByName = "convertImg"),
-            @Mapping(target = "name",source = "name"),
-            @Mapping(target = "price",source = "price"),
-            @Mapping(target = "promoPrice",source = "promoPrice"),
-            @Mapping(target = "remaining",source = "remaining"),
-            @Mapping(target = "warranty",source = "warranty"),
-            @Mapping(target = "images", source = "images", qualifiedByName = "convertImgs")
-
-    })
-    Product toProduct(ProductDataInput input);
-
-
     @Named("convertImgs")
     static List<Image> convertImages(List<MultipartFile> multipartFiles){
         List<Image> images = new ArrayList<>();
@@ -102,5 +85,5 @@ public interface ProductMapper {
             @Mapping(target = "id", source = "id")
 
     })
-    Product toEditProduct(ProductDataInput input, Long id);
+    Product toProduct(ProductDataInput input, Long id);
 }
